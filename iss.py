@@ -5,8 +5,6 @@ from math import cos, asin, sqrt, pi
 MY_LAT = 51.507351
 MY_LNG = -0.127758
 
-ACCOUNT_SID = "AC5019c909f02cb6ff6b848fde1363fce4"
-AUTH_TOKEN = os.environ.get("AUTH_TOKEN")
 ENDPOINT = "http://api.open-notify.org/iss-now.json"
 
 
@@ -29,4 +27,4 @@ class ISS:
         a = 0.5 - cos((MY_LAT-self.iss_latitude)*p)/2 + cos(self.iss_latitude*p) * \
             cos(MY_LAT*p) * (1-cos((MY_LNG-self.iss_longitude)*p))/2
 
-        return 12742 * asin(sqrt(a))
+        return round(12742 * asin(sqrt(a)), 2)
